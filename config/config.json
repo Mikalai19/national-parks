@@ -1,11 +1,11 @@
 {
   "development": {
-    "database": "express_authentication_development",
+    "database": "national-parks_development",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
   "test": {
-    "database": "express_authentication_test",
+    "database": "national-parks_test",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
