@@ -15,10 +15,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       about: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       weatherInfo: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       city: {
         type: Sequelize.STRING

@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
   };
   Park.init({
     name: DataTypes.STRING,
-    about: DataTypes.STRING,
-    weatherInfo: DataTypes.STRING,
+    about: DataTypes.TEXT,
+    weatherInfo: DataTypes.TEXT,
     city: DataTypes.STRING,
     state: DataTypes.STRING,
     img: DataTypes.STRING

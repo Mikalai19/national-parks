@@ -6,8 +6,10 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
-//const axios = require('axios');
+const axios = require('axios');
 
+const { Favorite, Park, State, Trail, User } = require('./models');
+console.log(Park);
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
 
@@ -48,6 +50,63 @@ app.get('/profile', isLoggedIn, (req, res) => {
 // controllers
 app.use('/auth', require('./controllers/auth'));
 
+//////////////// CREATE PARKS  ///////////////////////////////
+
+axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=p9r2e6uOfh6OhiCQXIFY2zUhzRfYrgJRULsesOCT')
+  .then(response => {
+    // console.log('DATA HERE', Object.keys(response.data));
+    console.log('DATA HERE');
+
+    let array = response.data.data;
+    for (let i = 0; i < array.length; i++) {
+      let park = array[i];
+      console.log(park.fullName);               // name
+      console.log(park.description);            // about
+      console.log(park.weatherInfo);            // weatherInfo
+      console.log(park.states);                 //state
+      console.log(park.addresses[1].city);      //city 
+      console.log(park.images[0].url);          //img
+      console.log('........');
+
+
+      Park.create({
+        name: park.fullName,
+        about: park.description,
+        city: park.addresses[1].city,
+        state: park.states,
+        weatherInfo: park.weatherInfo,
+        img: park.images[0].url
+
+      })
+        .then(function (newParks) {
+          console.log('NEW PARKS CREATED', newParks.toJSON());
+
+
+        })
+        .catch(function (error) {
+          console.log('ERROR', error)
+        });
+    }
+  })
+  .catch(err => {
+    console.log(err);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////
+
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
   console.log(`🎧 You're listening to the smooth sounds of port ${PORT} 🎧`);
@@ -57,26 +116,13 @@ module.exports = server;
 
 
 
-// axios.get('https://developer.nps.gov/api/v1/parks?&api_key=p9r2e6uOfh6OhiCQXIFY2zUhzRfYrgJRULsesOCT')
-//   .then(response => {
-//     // console.log('DATA HERE', Object.keys(response.data));
-//     console.log('DATA HERE');
-//     let array = response.data.data;
-//     for (let i = 0; i < array.length; i++) {
-//       let park = array[i];
-//       console.log(park.fullName);
-//       console.log(park.description);
-//       console.log(park.weatherInfo);
-//       console.log(park.states);
-//       console.log(park.addresses[1].city);
-//       console.log(park.images[0].url);
-//       console.log('........');
-//     }
 
 
 
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
+
+
+
+
+
+
 
