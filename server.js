@@ -6,6 +6,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
+//const axios = require('axios');
 
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
@@ -40,7 +41,7 @@ app.get('/', (req, res) => {
 
 // Add this above /auth controllers
 app.get('/profile', isLoggedIn, (req, res) => {
-  const { id, name, email } = req.user.get(); 
+  const { id, name, email } = req.user.get();
   res.render('profile', { id, name, email });
 });
 
@@ -53,3 +54,29 @@ const server = app.listen(PORT, () => {
 });
 
 module.exports = server;
+
+
+
+// axios.get('https://developer.nps.gov/api/v1/parks?&api_key=p9r2e6uOfh6OhiCQXIFY2zUhzRfYrgJRULsesOCT')
+//   .then(response => {
+//     // console.log('DATA HERE', Object.keys(response.data));
+//     console.log('DATA HERE');
+//     let array = response.data.data;
+//     for (let i = 0; i < array.length; i++) {
+//       let park = array[i];
+//       console.log(park.fullName);
+//       console.log(park.description);
+//       console.log(park.weatherInfo);
+//       console.log(park.states);
+//       console.log(park.addresses[1].city);
+//       console.log(park.images[0].url);
+//       console.log('........');
+//     }
+
+
+
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
+
