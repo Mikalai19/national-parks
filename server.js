@@ -100,15 +100,15 @@ axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=p9r2e6uOfh6O
   });
 
 
-Park.findAll({
-  where: { name: 'National Park' }
-})
-  .then(function (parkFind) {
-    console.log('PARK', parkFind);
-  })
-  .catch(function (error) {
-    console.log('ERROR', error);
-  })
+// // Park.findAll({
+// //   where: { name: 'National Park' }
+// // })
+// //   .then(function (parkFind) {
+// //     console.log('PARK', parkFind);
+// //   })
+// //   .catch(function (error) {
+// //     console.log('ERROR', error);
+// //   })
 
 
 
@@ -172,7 +172,7 @@ app.post('/favorites', function (req, res) {
   })
     .then(function (newFavorite) {
       newFavorite = newFavorite.toJSON();
-      console.log('CREATE A FAVORITE', newFavorite.to.JSON());
+      console.log('CREATE A FAVORITE', newFavorite);
       res.redirect(`/favorites/${newFavorite.id}`);
     })
     .catch(function (error) {
@@ -181,13 +181,28 @@ app.post('/favorites', function (req, res) {
       // res.redirect('favorites');
     })
 
-
-
-
-
 });
 
 
+app.get('/favorites/:id', function (req, res) {
+  console.log('PARAMS', req.params);
+  let favoriteIndex = Number(req.params.id);
+  console.log('IS THIS A NUMBER?', favoriteIndex);
+  Favorite.findByPk(favoriteIndex)
+    .then(function (favoritePark) {
+      if (favoritePark) {
+        favoritePark = favoritePark.toJSON();
+        console.log('IS THIS A Park?', favoritePark);
+        res.render('showfavorite', { favoritePark });
+      } else {
+        console.log('This Park does not exist');
+        res.render('404', { msg: 'Park does not exist' });
+      }
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+    });
+});
 
 
 
@@ -195,8 +210,8 @@ app.post('/favorites', function (req, res) {
 ///////// STATE CREATE /////////////
 
 State.create({
-  name: 'WA',
-  numberOfParks: 6
+  name: 'OR',
+  numberOfParks: 2
 })
   .then(function (newState) {
     console.log('STATE NAME', newState);
@@ -208,7 +223,17 @@ State.create({
 
 //////// TRAILS CREATE ///////
 
-
+// Trail.create({
+//   name: 'Mirror lake trail',
+//   length: '0,6',
+//   difficulty: 'easy'
+// })
+// .then(function(newTrail){
+//   console.log('PARK NAME', newTrail);
+// })
+// .catch(function(error){
+//   console.log('ERROR',error)
+// })
 
 
 
