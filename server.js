@@ -129,9 +129,10 @@ app.get('/parks/:id', function (req, res) {
       if (park) {
         park = park.toJSON();
         console.log('IS IT NUMBER?', park);
+        res.render('show', { park: park });
       } else {
-        console.log('Sorry... try it again')
-        res.render('/show', { park: park });
+        console.log('Sorry...Try it again')
+        res.render('404', { message: 'Sorry...Try it again' });
       }
     })
     .catch(function (error) {
