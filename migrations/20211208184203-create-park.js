@@ -14,6 +14,9 @@ module.exports = {
       stateId: {
         type: Sequelize.INTEGER
       },
+      parkId: {
+        type: Sequelize.INTEGER
+      },
       about: {
         type: Sequelize.TEXT
       },

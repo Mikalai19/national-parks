@@ -99,6 +99,19 @@ axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=p9r2e6uOfh6O
     console.log(err);
   });
 
+
+Park.findAll({
+  where: { name: 'National Park' }
+})
+  .then(function (parkFind) {
+    console.log('PARK', parkFind);
+  })
+  .catch(function (error) {
+    console.log('ERROR', error);
+  })
+
+
+
 ////////////////////////////////////////////////////////////////
 
 
@@ -132,7 +145,7 @@ app.get('/parks/:id', function (req, res) {
         res.render('show', { park: park });
       } else {
         console.log('Sorry...Try it again')
-        res.render('404', { message: 'Sorry...Try it again' });
+        res.render('404', { msg: 'Sorry...Try it again' });
       }
     })
     .catch(function (error) {
@@ -146,24 +159,54 @@ app.get('/parks/:id', function (req, res) {
 
 ////////////// POST ////////////
 
+app.get('/favorites', function (req, res) {
+  res.render('favorites');
+});
+
+
 app.post('/favorites', function (req, res) {
   console.log('FORM', req.body);
-
   Favorite.create({
+    parkId: req.body.parkId,
 
   })
+    .then(function (newFavorite) {
+      newFavorite = newFavorite.toJSON();
+      console.log('CREATE A FAVORITE', newFavorite.to.JSON());
+      res.redirect(`/favorites/${newFavorite.id}`);
+    })
+    .catch(function (error) {
+      console.log.apply('ERROR', error);
+      res.render('404', { msg: 'Sorry... Try it again' });
+      // res.redirect('favorites');
+    })
 
 
 
+
+
+});
+
+
+
+
+
+
+///////// STATE CREATE /////////////
+
+State.create({
+  name: 'WA',
+  numberOfParks: 6
 })
+  .then(function (newState) {
+    console.log('STATE NAME', newState);
+  })
+  .catch(function (error) {
+    console.log('ERROR', error);
+  });
 
 
-
-
-
-
-
-
+//////// TRAILS CREATE ///////
 
 
 

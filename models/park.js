@@ -23,7 +23,9 @@ module.exports = (sequelize, DataTypes) => {
     weatherInfo: DataTypes.TEXT,
     city: DataTypes.STRING,
     state: DataTypes.STRING,
-    img: DataTypes.STRING
+    img: DataTypes.STRING,
+    stateId: DataTypes.INTEGER,
+    parkId: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Park',
