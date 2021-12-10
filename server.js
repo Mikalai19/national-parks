@@ -7,9 +7,11 @@ const session = require('express-session');
 const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
+const methodOverride = require('method-override');
+
 
 const { Favorite, Park, State, Trail, User } = require('./models');
-console.log(Park);
+//console.log(Park);
 const SECRET_SESSION = process.env.SECRET_SESSION;
 console.log(SECRET_SESSION);
 
@@ -36,6 +38,7 @@ app.use((req, res, next) => {
   res.locals.currentUser = req.user;
   next();
 });
+app.use(methodOverride('_method'));
 
 app.get('/', (req, res) => {
   res.render('index');
@@ -49,6 +52,12 @@ app.get('/profile', isLoggedIn, (req, res) => {
 
 // controllers
 app.use('/auth', require('./controllers/auth'));
+
+
+
+app.get('/', function (req, res) {
+  res.json({ message: 'Welcome to Spotify 2.0' });
+});
 
 //////////////// CREATE PARKS  ///////////////////////////////
 
@@ -80,8 +89,6 @@ axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=p9r2e6uOfh6O
       })
         .then(function (newParks) {
           console.log('NEW PARKS CREATED', newParks.toJSON());
-
-
         })
         .catch(function (error) {
           console.log('ERROR', error)
@@ -94,18 +101,35 @@ axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=p9r2e6uOfh6O
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 ////////////////////////////////////////////////////////////////
+
+
+
+/////////////////   GET ROUTE  /////////////////////
+
+
+app.get('/parks', function (req, res) {
+  Park.findAll()
+    .then(function (parksList) {
+      console.log('FOUND ALL PARKS', parksList);
+      res.render('parks', { parks: parksList });
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+      res.json({ msg: 'Error occured' });
+    });
+});
+
+
+
+
+
+
+////////////////////////////////////////////////////
+
+
+
+
 
 const PORT = process.env.PORT || 3000;
 const server = app.listen(PORT, () => {
