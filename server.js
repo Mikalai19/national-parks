@@ -56,7 +56,7 @@ app.use('/auth', require('./controllers/auth'));
 
 
 app.get('/', function (req, res) {
-  res.json({ message: 'Welcome to Spotify 2.0' });
+  res.json({ message: 'Welcome to national parks' });
 });
 
 //////////////// CREATE PARKS  ///////////////////////////////
@@ -99,13 +99,12 @@ axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=p9r2e6uOfh6O
     console.log(err);
   });
 
-
-
 ////////////////////////////////////////////////////////////////
 
 
 
-/////////////////   GET ROUTE  /////////////////////
+
+/////////////////   GET PARKS  /////////////////////
 
 
 app.get('/parks', function (req, res) {
@@ -121,11 +120,50 @@ app.get('/parks', function (req, res) {
 });
 
 
+app.get('/parks/:id', function (req, res) {
+  console.log('PARAMS', req.params);
+  let parkIndex = Number(req.params.id);
+  console.log('NUMBER?', parkIndex);
+  Park.findByPk(parkIndex)
+    .then(function (park) {
+      if (park) {
+        park = park.toJSON();
+        console.log('IS IT NUMBER?', park);
+      } else {
+        console.log('Sorry... try it again')
+        res.render('/show', { park: park });
+      }
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+    })
 
-
-
+})
 
 ////////////////////////////////////////////////////
+
+
+////////////// POST ////////////
+
+app.post('/favorites', function (req, res) {
+  console.log('FORM', req.body);
+
+  Favorite.create({
+
+  })
+
+
+
+})
+
+
+
+
+
+
+
+
+
 
 
 
