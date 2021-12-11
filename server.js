@@ -8,6 +8,7 @@ const passport = require('./config/ppConfig');
 const isLoggedIn = require('./middleware/isLoggedIn');
 const axios = require('axios');
 const methodOverride = require('method-override');
+const { Op } = require('sequelize');
 
 
 const { Favorite, Park, State, Trail, User } = require('./models');
@@ -121,7 +122,14 @@ app.get('/', function (req, res) {
 
 
 app.get('/parks', function (req, res) {
-  Park.findAll()
+  Park.findAll({
+    where: {
+      name: {
+        [Op.substring]: 'National Park'
+      }
+    }
+  })
+
     .then(function (parksList) {
       console.log('FOUND ALL PARKS', parksList);
       res.render('parks', { parks: parksList });
@@ -223,17 +231,17 @@ app.get('/favorites/:id', function (req, res) {
 
 //////// TRAILS CREATE ///////
 
-Trail.create({
-  name: 'Mirror lake trail',
-  length: '0,6',
-  difficulty: 'easy'
-})
-  .then(function (newTrail) {
-    console.log('PARK NAME', newTrail);
-  })
-  .catch(function (error) {
-    console.log('ERROR', error)
-  })
+// Trail.create({
+//   name: 'Mirror lake trail',
+//   length: '0,6',
+//   difficulty: 'easy'
+// })
+//   .then(function (newTrail) {
+//     console.log('PARK NAME', newTrail);
+//   })
+//   .catch(function (error) {
+//     console.log('ERROR', error)
+//   })
 
 
 
