@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       models.Park.belongsTo(models.State, { foreignKey: 'stateId' });
       models.Park.hasMany(models.Trail, { foreignKey: 'parkId' });
-      models.Park.hasOne(models.State, { foreignKey: 'parkId' });
+      //models.Park.hasOne(models.State, { foreignKey: 'parkId' });
 
     }
   };

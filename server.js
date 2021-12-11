@@ -61,43 +61,43 @@ app.get('/', function (req, res) {
 
 //////////////// CREATE PARKS  ///////////////////////////////
 
-axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=p9r2e6uOfh6OhiCQXIFY2zUhzRfYrgJRULsesOCT')
-  .then(response => {
-    // console.log('DATA HERE', Object.keys(response.data));
-    console.log('DATA HERE');
+// axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=p9r2e6uOfh6OhiCQXIFY2zUhzRfYrgJRULsesOCT')
+//   .then(response => {
+//     // console.log('DATA HERE', Object.keys(response.data));
+//     console.log('DATA HERE');
 
-    let array = response.data.data;
-    for (let i = 0; i < array.length; i++) {
-      let park = array[i];
-      console.log(park.fullName);               // name
-      console.log(park.description);            // about
-      console.log(park.weatherInfo);            // weatherInfo
-      console.log(park.states);                 //state
-      console.log(park.addresses[1].city);      //city 
-      console.log(park.images[0].url);          //img
-      console.log('........');
+//     let array = response.data.data;
+//     for (let i = 0; i < array.length; i++) {
+//       let park = array[i];
+//       console.log(park.fullName);               // name
+//       console.log(park.description);            // about
+//       console.log(park.weatherInfo);            // weatherInfo
+//       console.log(park.states);                 //state
+//       console.log(park.addresses[1].city);      //city 
+//       console.log(park.images[0].url);          //img
+//       console.log('........');
 
 
-      Park.create({
-        name: park.fullName,
-        about: park.description,
-        city: park.addresses[1].city,
-        state: park.states,
-        weatherInfo: park.weatherInfo,
-        img: park.images[0].url
+//       Park.create({
+//         name: park.fullName,
+//         about: park.description,
+//         city: park.addresses[1].city,
+//         state: park.states,
+//         weatherInfo: park.weatherInfo,
+//         img: park.images[0].url
 
-      })
-        .then(function (newParks) {
-          console.log('NEW PARKS CREATED', newParks.toJSON());
-        })
-        .catch(function (error) {
-          console.log('ERROR', error)
-        });
-    }
-  })
-  .catch(err => {
-    console.log(err);
-  });
+//       })
+//         .then(function (newParks) {
+//           console.log('NEW PARKS CREATED', newParks.toJSON());
+//         })
+//         .catch(function (error) {
+//           console.log('ERROR', error)
+//         });
+//     }
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
 
 // // Park.findAll({
@@ -209,31 +209,31 @@ app.get('/favorites/:id', function (req, res) {
 
 ///////// STATE CREATE /////////////
 
-State.create({
-  name: 'OR',
-  numberOfParks: 2
-})
-  .then(function (newState) {
-    console.log('STATE NAME', newState);
-  })
-  .catch(function (error) {
-    console.log('ERROR', error);
-  });
+// State.create({
+//   name: 'WY',
+//   numberOfParks: 10
+// })
+//   .then(function (newState) {
+//     console.log('STATE NAME', newState);
+//   })
+//   .catch(function (error) {
+//     console.log('ERROR', error);
+//   });
 
 
 //////// TRAILS CREATE ///////
 
-// Trail.create({
-//   name: 'Mirror lake trail',
-//   length: '0,6',
-//   difficulty: 'easy'
-// })
-// .then(function(newTrail){
-//   console.log('PARK NAME', newTrail);
-// })
-// .catch(function(error){
-//   console.log('ERROR',error)
-// })
+Trail.create({
+  name: 'Mirror lake trail',
+  length: '0,6',
+  difficulty: 'easy'
+})
+  .then(function (newTrail) {
+    console.log('PARK NAME', newTrail);
+  })
+  .catch(function (error) {
+    console.log('ERROR', error)
+  })
 
 
 
