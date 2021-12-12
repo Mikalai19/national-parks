@@ -1,0 +1,12 @@
+<form method="POST" action="/trails">
+    <label for="name">Name</label>
+    <input type="text" name="name" />
+
+    <label for="length">Length</label>
+    <input id="length" type="text" name="length" />
+
+    <label for="difficulty">Difficulty</label>
+    <input id="difficulty" type="text" name="difficulty" />
+
+    <input type="submit" />
+</form>

@@ -1,19 +1,424 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Parks</title>
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bulma@0.9.0/css/bulma.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="../css/hero.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css"
+    />
+    <style>
+      .columns:nth-child(2) {
+        margin-top: -10rem;
+      }
+    </style>
   </head>
   <body>
-    <% for( let i = 0; i < parks.length; i++ ) { %> <% let a = parks[i]; %> <% a
-    = a.toJSON() %>
-    <p><%= a.name %></p>
-    <p><%= a.city %></p>
-    <p><%= a.img %></p>
-    <p><%= a.id %></p>
-    <% }%>
-    <hr />
+    <section class="hero is-info is-small">
+      <div class="hero-body">
+        <div class="container has-text-centered">
+          <p class="title">Most Popular National Parks in US</p>
+          <p class="subtitle">Most visited parks</p>
+        </div>
+      </div>
+    </section>
+    <section class="container">
+      <div class="columns features">
+        <div class="column is-4 modal-button" data-target="modal-card">
+          <div class="card is-shady">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Green_River_Overlook_Ekker_Butte.jpg/1200px-Green_River_Overlook_Ekker_Butte.jpg"
+                  alt="Placeholder image"
+                />
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <h4><% for( let i = 0; i < parks.length; i++ ) { %>
+                  <% let a = parks[i]; %> 
+                  <% a = a.toJSON() %>
+                  <% if(a.name === 'Canyonlands National Park'){%> 
+                   <p> <%= a.name %> </p>
+                   <% break; %>
+                   <% }%>
+                   <% }%> </h4> 
+                <p>
+                  <% for( let i = 0; i < parks.length; i++ ) { %>
+                    <% let a = parks[i]; %> 
+                    <% a = a.toJSON() %>
+                    <% if(a.name === 'Canyonlands National Park'){%> 
+                     <p> <%= a.weatherInfo %> </p>
+                     <% break; %> 
+                     <% }%>
+                     <% }%> 
+                </p>
+                <span class="button is-link modal-button">See details</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="card is-shady">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  src="https://i.guim.co.uk/img/media/62c0826a1b6d7d7f390f9fd2ac4b1b7f7ff4c241/0_150_3024_1815/master/3024.jpg?width=480&quality=45&auto=format&fit=max&dpr=2&s=74f785e5ddd5992bc053ce4fcadcf86d"
+                  alt="butterfly image"
+                  class="modal-button"
+                  data-target="modal-image4"
+                />
+              </figure>
+            </div>
+            <div class="card-content modal-button" data-target="modal-card2">
+              <div class="content">
+                <h4><% for( let i = 0; i < parks.length; i++ ) { %>
+                  <% let a = parks[i]; %> 
+                  <% a = a.toJSON() %>
+                  <% if(a.name === 'Joshua Tree National Park'){%> 
+                   <p> <%= a.name %> </p>
+                   <% break; %>
+                   <% }%>
+                   <% }%> </h4> 
+                <p>
+                  <% for( let i = 0; i < parks.length; i++ ) { %>
+                    <% let a = parks[i]; %> 
+                    <% a = a.toJSON() %>
+                    <% if(a.name === 'Joshua Tree National Park'){%> 
+                     <p> <%= a.weatherInfo %> </p>
+                     <% break; %> 
+                     <% }%>
+                     <% }%> 
+                </p>
+                <span class="button is-link modal-button">See details</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="card is-shady">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  src="https://media.cntraveler.com/photos/5ebeef63f52f4c0911cac483/master/pass/GrandCanyonNationalPark-2020-GettyImages-858637934.jpg"
+                  alt="butterfly image"
+                  class="modal-button"
+                  data-target="modal-image4"
+                />
+              </figure>
+            </div>
+            <div class="card-content modal-button" data-target="modal-card2">
+              <div class="content">
+                <h4><% for( let i = 0; i < parks.length; i++ ) { %>
+                  <% let a = parks[i]; %> 
+                  <% a = a.toJSON() %>
+                  <% if(a.name === 'Grand Canyon National Park'){%> 
+                   <p> <%= a.name %> </p>
+                   <% break; %>
+                   <% }%>
+                   <% }%> </h4> 
+                <p>
+                  <% for( let i = 0; i < parks.length; i++ ) { %>
+                    <% let a = parks[i]; %> 
+                    <% a = a.toJSON() %>
+                    <% if(a.name === 'Grand Canyon National Park'){%> 
+                     <p> <%= a.weatherInfo %> </p>
+                     <% break; %> 
+                     <% }%>
+                     <% }%> 
+                </p>
+                <span class="button is-link modal-button">See details</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="columns features">
+        <div class="column is-4 modal-button" data-target="modal-card">
+          <div class="card is-shady">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  src="https://www.traveloffpath.com/wp-content/uploads/2021/05/Ten-Reasons-to-visit-Grand-Teton-National-Park.jpg"
+                  alt="Placeholder image"
+                />
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <h4><% for( let i = 0; i < parks.length; i++ ) { %>
+                  <% let a = parks[i]; %> 
+                  <% a = a.toJSON() %>
+                  <% if(a.name === 'Grand Teton National Park'){%> 
+                   <p> <%= a.name %> </p>
+                   <% break; %>
+                   <% }%>
+                   <% }%> </h4> 
+                <p>
+                  <% for( let i = 0; i < parks.length; i++ ) { %>
+                    <% let a = parks[i]; %> 
+                    <% a = a.toJSON() %>
+                    <% if(a.name === 'Grand Teton National Park'){%> 
+                     <p> <%= a.weatherInfo %> </p>
+                     <% break; %> 
+                     <% }%>
+                     <% }%> 
+                </p>
+                <span class="button is-link modal-button">See details</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="card is-shady">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  src="https://assets.vogue.com/photos/5ef0d94adf255788213d57b8/4:3/w_4016,h_3012,c_limit/glacier-national-park-promo.jpg"
+                  alt="butterfly image"
+                  class="modal-button"
+                  data-target="modal-image4"
+                />
+              </figure>
+            </div>
+            <div class="card-content modal-button" data-target="modal-card2">
+              <div class="content">
+                <h4><% for( let i = 0; i < parks.length; i++ ) { %>
+                  <% let a = parks[i]; %> 
+                  <% a = a.toJSON() %>
+                  <% if(a.name === 'Glacier National Park'){%> 
+                   <p> <%= a.name %> </p>
+                   <% break; %>
+                   <% }%>
+                   <% }%> </h4> 
+                <p>
+                  <% for( let i = 0; i < parks.length; i++ ) { %>
+                    <% let a = parks[i]; %> 
+                    <% a = a.toJSON() %>
+                    <% if(a.name === 'Glacier National Park'){%> 
+                     <p> <%= a.weatherInfo %> </p>
+                     <% break; %> 
+                     <% }%>
+                     <% }%> 
+                </p>
+                <span class="button is-link modal-button">See details</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-4">
+          <div class="card is-shady">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                <img
+                  src="https://www.nps.gov/crla/learn/nature/images/lake-by-Kim-Chamales.jpg"
+                  alt="butterfly image"
+                  class="modal-button"
+                  data-target="modal-image4"
+                />
+              </figure>
+            </div>
+            <div class="card-content modal-button" data-target="modal-card2">
+              <div class="content">
+                <h4><% for( let i = 0; i < parks.length; i++ ) { %>
+                  <% let a = parks[i]; %> 
+                  <% a = a.toJSON() %>
+                  <% if(a.name === 'Crater Lake National Park'){%> 
+                   <p> <%= a.name %> </p>
+                   <% break; %>
+                   <% }%>
+                   <% }%> </h4> 
+                <p>
+                  <% for( let i = 0; i < parks.length; i++ ) { %>
+                    <% let a = parks[i]; %> 
+                    <% a = a.toJSON() %>
+                    <% if(a.name === 'Crater Lake National Park'){%> 
+                     <p> <%= a.weatherInfo %> </p>
+                     <% break; %> 
+                     <% }%>
+                     <% }%> 
+                </p>
+                <span class="button is-link modal-button">See details</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  ===============
+    HERE BE MODALS
+    ===============  -->
+    <!-- 3dFlipVertical card tiny -->
+    <div id="modal-card" class="modal modal-fx-3dSlit">
+      <div class="modal-background"></div>
+      <div class="modal-content is-tiny">
+        <!-- content -->
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Green_River_Overlook_Ekker_Butte.jpg/1200px-Green_River_Overlook_Ekker_Butte.jpg"
+                alt="Placeholder image"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  
+                </figure>
+              </div>
+              <div >
+                <p class="title is-4">About the Park</p>
+                
+              </div>
+            </div>
+            <div class="content">
+              <% for( let i = 0; i < parks.length; i++ ) { %>
+                <% let a = parks[i]; %> 
+                <% a = a.toJSON() %>
+                <% if(a.name === 'Canyonlands National Park'){%> 
+                 <p> <%= a.about %> </p>
+                 <% break; %> 
+                 <% }%>
+                 <% }%> 
+              
+            </div>
+          </div>
+        </div>
+        <!-- end content -->
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+    <!-- end tiny See details -->
+    <!-- 3dFlipVertical card tiny [butterfly] -->
+    <div id="modal-card2" class="modal modal-fx-3dSlit">
+      <div class="modal-background"></div>
+      <div class="modal-content is-tiny">
+        <!-- content -->
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img
+                src="https://i.guim.co.uk/img/media/62c0826a1b6d7d7f390f9fd2ac4b1b7f7ff4c241/0_150_3024_1815/master/3024.jpg?width=480&quality=45&auto=format&fit=max&dpr=2&s=74f785e5ddd5992bc053ce4fcadcf86d"
+                alt="butterfly"
+              />
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  
+                </figure>
+              </div>
+             
+                <p class="title is-4">About the Park</p>
+                
+              </div>
+            </div>
+            <div class="content">
+              <% for( let i = 0; i < parks.length; i++ ) { %>
+                <% let a = parks[i]; %> 
+                <% a = a.toJSON() %>
+                <% if(a.name === 'Joshua Tree National Park'){%> 
+                 <p> <%= a.about %> </p>
+                 <% break; %> 
+                 <% }%>
+                 <% }%> 
+            </div>
+          </div>
+        </div>
+        <!-- end content -->
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+  <!-- 3dFlipVertical card tiny -->
+  <div id="modal-card" class="modal modal-fx-3dSlit">
+    <div class="modal-background"></div>
+    <div class="modal-content is-tiny">
+      <!-- content -->
+      <div class="card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Green_River_Overlook_Ekker_Butte.jpg/1200px-Green_River_Overlook_Ekker_Butte.jpg"
+              alt="Placeholder image"
+            />
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                
+              </figure>
+            </div>
+            <div >
+              <p class="title is-4">About the Park</p>
+              
+            </div>
+          </div>
+          <div class="content">
+            <% for( let i = 0; i < parks.length; i++ ) { %>
+              <% let a = parks[i]; %> 
+              <% a = a.toJSON() %>
+              <% if(a.name === 'Grand Canyon National Park'){%> 
+               <p> <%= a.about %> </p>
+               <% break; %> 
+               <% }%>
+               <% }%> 
+            
+          </div>
+        </div>
+      </div>
+      <!-- end content -->
+    </div>
+    <button class="modal-close is-large" aria-label="close"></button>
+  </div>
+        <!-- end content -->
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+    <!-- Image modal -->
+    <div id="modal-image4" class="modal modal-fx-3dSlit">
+      <div class="modal-background"></div>
+      <div class="modal-content is-huge is-image">
+        <!-- content -->
+        <img src="https://source.unsplash.com/hLyd1LukQ7E" alt="butterfly" />
+        <!-- end content -->
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+    <!-- Image modal-->
+    <div id="modal-image" class="modal modal-fx-superScaled">
+      <div class="modal-background"></div>
+      <div class="modal-content is-image">
+        <!-- content -->
+        <img
+          src="https://res.cloudinary.com/ameo/image/upload/v1568711475/pexels-photo-1302883_fjje0f.jpg"
+          alt="Placeholder image"
+        />
+        <!--     <img src="https://source.unsplash.com/zFrUz_tNjCY" alt="placeholder">
+        -->
+        <!-- end content -->
+      </div>
+      <button class="modal-close is-large" aria-label="close"></button>
+    </div>
+    <script src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/js/OverlayScrollbars.min.js"></script>
+    <script src="../js/wild.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        //The first argument are the elements to which the plugin shall be initialized
+        //The second argument has to be at least a empty object or a object with your desired options
+        OverlayScrollbars(document.querySelectorAll("body"), {});
+      });
+    </script>
   </body>
-</html>
+</html> -->

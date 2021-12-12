@@ -60,7 +60,7 @@ app.get('/', function (req, res) {
   res.json({ message: 'Welcome to national parks' });
 });
 
-//////////////// CREATE PARKS  ///////////////////////////////
+////////////// CREATE PARKS  ///////////////////////////////
 
 // axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=p9r2e6uOfh6OhiCQXIFY2zUhzRfYrgJRULsesOCT')
 //   .then(response => {
@@ -129,7 +129,6 @@ app.get('/parks', function (req, res) {
       }
     }
   })
-
     .then(function (parksList) {
       console.log('FOUND ALL PARKS', parksList);
       res.render('parks', { parks: parksList });
@@ -138,6 +137,10 @@ app.get('/parks', function (req, res) {
       console.log('ERROR', error);
       res.json({ msg: 'Error occured' });
     });
+});
+
+app.get('/parks', function (req, res) {
+  res.render('parks/new');
 });
 
 
@@ -218,8 +221,8 @@ app.get('/favorites/:id', function (req, res) {
 ///////// STATE CREATE /////////////
 
 // State.create({
-//   name: 'WY',
-//   numberOfParks: 10
+//   name: 'WA',
+//   numberOfParks: 8
 // })
 //   .then(function (newState) {
 //     console.log('STATE NAME', newState);
@@ -232,9 +235,9 @@ app.get('/favorites/:id', function (req, res) {
 //////// TRAILS CREATE ///////
 
 // Trail.create({
-//   name: 'Mirror lake trail',
-//   length: '0,6',
-//   difficulty: 'easy'
+//   name: 'Emerald Pools Trail',
+//   length: '3,0',
+//   difficulty: 'Moderate'
 // })
 //   .then(function (newTrail) {
 //     console.log('PARK NAME', newTrail);
@@ -242,6 +245,107 @@ app.get('/favorites/:id', function (req, res) {
 //   .catch(function (error) {
 //     console.log('ERROR', error)
 //   })
+
+
+
+
+/////////////////   GET Trails  /////////////////////
+
+
+
+app.get('/trails', function (req, res) {
+  Trail.findAll()
+    .then(function (trailList) {
+      console.log('FOUND ALL TRAILS', trailList);
+      res.render('trails/index', { trails: trailList })
+    })
+    .catch(function (err) {
+      console.log('ERROR', err);
+      res.json({ msg: 'Error , please try again....' });
+    });
+});
+
+
+
+
+app.get('/trails/new', function (req, res) {
+  res.render('trails/new');
+});
+
+
+app.get('/trails/edit/:id', function (req, res) {
+  let trailIndex = Number(req.params.id);
+  Trail.findByPk(trailIndex)
+    .then(function (trail) {
+      if (trail) {
+        trail = trail.toJSON();
+        res.render('trails/edit', { trail });
+
+      } else {
+        console.log('This trail does not exist');
+        res.render('404', { msg: 'Trail does not exist' });
+      }
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+    });
+
+})
+
+
+app.get('/trails/:id', function (req, res) {
+  console.log('PARAMS', req.params);
+  let trailIndex = Number(req.params.id);
+  console.log('IS THIS A NUMBER?', trailIndex);
+  Trail.findByPk(trailIndex)
+    .then(function (trail) {
+      if (trail) {
+        trail = trail.toJSON();
+        console.log('IS THIS A trail?', trail);
+        res.render('trails/show', { trail });
+      } else {
+        console.log('This trail does not exist');
+        res.render('404', { msg: 'trail does not exist' });
+      }
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+    });
+});
+
+
+app.post('/trails', function (req, res) {
+  console.log('SUBMITTED FORM', req.body);
+  // res.json({ submittedForm: req.body });
+  Trail.create({
+    name: req.body.name,
+    length: Number(req.body.length),
+    difficulty: Number(req.body.tracks),
+
+  })
+    .then(function (newTrail) {
+      console.log('NEW Trail', newTrail.toJSON());
+      newTrail = newTrail.toJSON();
+      res.redirect(`/trails/${newTrail.id}`);
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+      res.render('404', { msg: 'Trail was not added' })
+      res.redirect('/trails/new');
+    })
+
+});
+
+
+
+
+
+
+
+
+
+
+
 
 
 
