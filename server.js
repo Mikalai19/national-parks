@@ -139,10 +139,28 @@ app.get('/parks', function (req, res) {
     });
 });
 
+
+app.get('/parks', function (req, res) {
+  Park.findAll({
+    where: {
+      name: {
+        [Op.substring]: 'National Park'
+      }
+    }
+  })
+    .then(function (parksList) {
+      console.log('FOUND ALL PARKS', parksList);
+      res.render('new', { parks: parksList });
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+      res.json({ msg: 'Error occured' });
+    });
+});
+
 app.get('/parks', function (req, res) {
   res.render('parks/new');
 });
-
 
 app.get('/parks/:id', function (req, res) {
   console.log('PARAMS', req.params);
@@ -194,6 +212,9 @@ app.post('/favorites', function (req, res) {
 
 });
 
+app.get('/favorites', function (req, res) {
+  res.render('favorites');
+});
 
 app.get('/favorites/:id', function (req, res) {
   console.log('PARAMS', req.params);
