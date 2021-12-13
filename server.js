@@ -221,16 +221,30 @@ app.get('/favorites', function (req, res) {
 
 
 
-app.get('/favorites', function (req, res) {
-  res.render('favorites');
-});
-
-
 
 
 app.get('/favorites', function (req, res) {
   res.render('favorites');
 });
+
+app.get('/favorites/edit/:id', function (req, res) {
+  let favoriteIndex = Number(req.params.id);
+  Favorite.findByPk(favoriteIndex)
+    .then(function (favorite) {
+      if (favorite) {
+        favorite = favorite.toJSON();
+        res.render('favorites', { favorite });
+
+      } else {
+        console.log('This favorite does not exist');
+        res.render('404', { msg: 'favorite does not exist' });
+      }
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+    });
+
+})
 
 app.get('/favorites/:id', function (req, res) {
   console.log('PARAMS', req.params);
@@ -241,7 +255,7 @@ app.get('/favorites/:id', function (req, res) {
       if (favoritePark) {
         favoritePark = favoritePark.toJSON();
         console.log('IS THIS A Park?', favoritePark);
-        res.render('showfavorite', { favoritePark });
+        res.render('favorites/index', { favoritePark });
       } else {
         console.log('This Park does not exist');
         res.render('404', { msg: 'Park does not exist' });
@@ -270,20 +284,20 @@ app.post('/favorites', function (req, res) {
 
 });
 
-app.delete('/favorites/:id', function (req, res) {
-  console.log("ID", req.params.id);
-})
-let favoriteIndex = Number(req.params.id);
-Favorite.destroy({
-  where: { id: favoriteIndex }
-})
-  .then(function (response) {
-    console.log('FAVORITES DELETED', response);
-    res.redirect('/favorites');
-  })
-  .catch(function (err) {
-    console.log(err);
-  })
+// app.delete('/favorites/:id', function (req, res) {
+//   console.log("ID", req.params.id);
+// })
+// let favoriteIndex = Number(req.params.id);
+// Favorite.destroy({
+//   where: { id: favoriteIndex }
+// })
+//   .then(function (response) {
+//     console.log('FAVORITES DELETED', response);
+//     res.redirect('/favorites');
+//   })
+//   .catch(function (err) {
+//     console.log(err);
+//   })
 
 ///////// STATE CREATE /////////////
 
@@ -444,7 +458,30 @@ app.get('/states', function (req, res) {
     });
 });
 
+app.get('/states/new', function (req, res) {
+  res.render('states/new');
+});
 
+
+app.get('/states/:id', function (req, res) {
+  console.log('PARAMS', req.params);
+  let stateIndex = Number(req.params.id);
+  console.log('IS THIS A NUMBER?', stateIndex);
+  State.findByPk(stateIndex)
+    .then(function (state) {
+      if (state) {
+        state = state.toJSON();
+        console.log('IS THIS A state?', state);
+        res.render('states/show', { state });
+      } else {
+        console.log('This state does not exist');
+        res.render('404', { msg: 'state does not exist' });
+      }
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+    });
+});
 
 
 

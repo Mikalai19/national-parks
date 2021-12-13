@@ -1,32 +1,173 @@
-<div class="row">
-  <div class="col-2 search-left"></div>
 
-  <div class="col-8 search-results">
-    <br />
-    <h1 class="results-header">States</h1>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>bulma cards</title>
+        <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon.png">
+        <!-- Bulma Version 0.9.0-->
+        <link rel='stylesheet' href='https://unpkg.com/bulma@0.9.0/css/bulma.min.css'>
+        <link rel="stylesheet" href="../css/kanban.css">
+        <script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+        <style>
+            body{
+                background-image: url('https://media.istockphoto.com/videos/blue-and-light-blue-gradient-background-beautiful-color-loop-material-video-id1277748423?b=1&k=20&m=1277748423&s=640x640&h=5xme0BhYS8gxSzXg9m2dXVjb24YtvXcVwyZRR0Xw0WU=');
+            }
+        </style>
+    </head>
+    <body>
 
-    <% states.forEach(index =>{ %>
-    <div class="individual-results">
-      <h4><a href="s/<%= index.name %>"><%=index.name%></a></h4>
-      <p><%=index.name %></p>
-      <p><%=index.numberOfParks %></p>
+<section class="hero is-info">
 
-      <a href="<%=index.img %>"><p><%=index.img %></p></a>
+</section>
 
-      <a href="/trails/edit/<%= index.id %>"><b>Add to Favorites</b></a>
+<section class="container">
+
+    <div class="column is-narrow">
+        <article class="message is-link">
+            <div class="message-header">
+                <p>All trails</p>
+                <button class="delete" aria-label="delete"></button>
+            </div>
+            <div class="message-body">
+                <div class="board-item">
+                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                        <% if(a.name ==='CA'){%>
+                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                              
+                       <%  }%>
+                      <% }) %></span></div>
+                </div>
+                <div class="board-item">
+                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                        <% if(a.name ==='KY'){%>
+                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                              
+                       <%  }%>
+                      <% }) %></span></div>
+                </div>
+                <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                    <% if(a.name ==='NY'){%>
+                          <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                          
+                   <%  }%>
+                  <% }) %></span></div>
+            </div>
+                <div class="board-item">
+                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                        <% if(a.name ==='WA'){%>
+                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                              
+                       <%  }%>
+                      <% }) %></span></div>
+                </div>
+                <div class="board-item">
+                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                        <% if(a.name ==='OR'){%>
+                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                              
+                       <%  }%>
+                      <% }) %></span></div>
+                </div>
+                <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                    <% if(a.name ==='NV'){%>
+                          <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                          
+                   <%  }%>
+                  <% }) %></span></div>
+            </div>
+                <div class="board-item">
+                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                        <% if(a.name ==='UT'){%>
+                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                              
+                       <%  }%>
+                      <% }) %></span></div>
+                </div>
+                <div class="board-item">
+                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                        <% if(a.name ==='AZ'){%>
+                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                              
+                       <%  }%>
+                      <% }) %></span></div>
+                </div>
+                                <div class="board-item">
+                                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                                        <% if(a.name ==='TX'){%>
+                                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                                              
+                                       <%  }%>
+                                      <% }) %></span></div>
+                                </div>
+                                <div class="board-item">
+                                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                                        <% if(a.name ==='MN'){%>
+                                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                                              
+                                       <%  }%>
+                                      <% }) %></span></div>
+                                </div>
+                                <div class="board-item">
+                                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                                        <% if(a.name ==='NM'){%>
+                                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                                              
+                                       <%  }%>
+                                      <% }) %></span></div>
+                                </div>
+                                <div class="board-item">
+                                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                                        <% if(a.name ==='CO'){%>
+                                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                                              
+                                       <%  }%>
+                                      <% }) %></span></div>
+                                </div>
+                                                <div class="board-item">
+                                                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                                                        <% if(a.name ==='SD'){%>
+                                                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                                                              
+                                                       <%  }%>
+                                                      <% }) %></span></div>
+                                                </div>
+                                                                <div class="board-item">
+                                                                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                                                                        <% if(a.name ==='OH'){%>
+                                                                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                                                                              
+                                                                       <%  }%>
+                                                                      <% }) %></span></div>
+                                                                </div>
+                                                                <div class="board-item">
+                                                                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                                                                        <% if(a.name ==='GA'){%>
+                                                                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                                                                              
+                                                                       <%  }%>
+                                                                      <% }) %></span></div>
+                                                                </div>
+                                                                <div class="board-item">
+                                                                    <div class="board-item-content"><span><% states.forEach(a =>{ %>
+                                                                        <% if(a.name ==='NC'){%>
+                                                                              <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
+                                                                              
+                                                                       <%  }%>
+                                                                      <% }) %></span></div>
+                                                                </div>
+            </div>
+        </article>
     </div>
-    <% }) %>
-  </div>
+    
+    
+    
+</div>
+</div>
+</section>
 
-  <div class="col-2 search-right"></div>
 </div>
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All States</title>
-  </head>
-  <body></body>
+<script src="../js/bulma.js"></script>
+</body>
 </html>

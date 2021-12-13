@@ -1,24 +1,43 @@
-<div class="row">
-  <div class="col-2 search-left"></div>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      h1 {
+        text-align: center;
+      }
+      body {
+        background-image: url("https://cdn.wallpapersafari.com/43/90/1Lp92s.png");
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-2 search-left"></div>
 
-  <div class="col-8 search-results">
-    <br />
-    <h1 class="results-header">National Parks</h1>
+      <div class="col-8 search-results">
+        <br />
+        <h1 class="results-header">National Parks</h1>
 
-    <% parks.forEach(index =>{ %>
-    <div class="individual-results">
-      <h4><a href="states/<%= index.name %>"><%=index.name%></a></h4>
-      <p><%=index.about %></p>
-      <p><%=index.city %></p>
-      <p><b><%=index.state %></b></p>
-      <p><%=index.weatherInfo %></p>
+        <% parks.forEach(index =>{ %>
+        <div class="individual-results">
+          <h4><a href="states/<%= index.name %>"><%=index.name%></a></h4>
+          <p><%=index.about %></p>
+          <p><%=index.city %></p>
+          <p><b><%=index.state %></b></p>
+          <p><%=index.weatherInfo %></p>
 
-      <a href="<%=index.img %>"><p><%=index.img %></p></a>
+          <a href="<%=index.img %>"><p><%=index.img %></p></a>
 
-      <a href="/trails/edit/<%= index.id %>"><b>Add to Favorites</b></a>
+          <a href="/trails/edit/<%= index.id %>"><b>Add to Favorites</b></a>
+        </div>
+        <% }) %>
+      </div>
+
+      <div class="col-2 search-right"></div>
     </div>
-    <% }) %>
-  </div>
-
-  <div class="col-2 search-right"></div>
-</div>
+  </body>
+</html>
