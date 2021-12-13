@@ -115,7 +115,7 @@ app.get("/parks", function (req, res) {
 
 | Method       | Path         | Location     | Purpose      |
 | ------------ | ------------ | ------------ | ------------ |
-| Content Cell | Content Cell | Content Cell | Content Cell |
+| GET          | Content Cell | Content Cell | Content Cell |
 | Content Cell | Content Cell | Content Cell | Content Cell |
 | Content Cell | Content Cell | Content Cell | Content Cell |
 | Content Cell | Content Cell | Content Cell | Content Cell |
