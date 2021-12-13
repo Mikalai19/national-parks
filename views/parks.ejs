@@ -20,6 +20,7 @@
         <div class="container has-text-centered">
           <p class="title">Most Popular National Parks in US</p>
           <p class="subtitle">Most visited parks</p>
+          
         </div>
       </div>
     </section>
@@ -274,6 +275,7 @@
               </div>
               <div >
                 <p class="title is-4">About the Park</p>
+                <a href="/trails/edit/<%= parks.id %>">Add to Favorites</a>
                 
               </div>
             </div>
@@ -420,5 +422,16 @@
         OverlayScrollbars(document.querySelectorAll("body"), {});
       });
     </script>
+
+<div class="content has-text-centered">
+  <div class="control level-item">
+    <a href="http://localhost:3000/showall">
+      <div class="tags has-addons">
+        
+        <span class="tag is-info">SEE ALL PARKS</span>
+      </div>
+    </a>
+  </div>
+</div>
   </body>
 </html> -->

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col-2 search-left"></div>
+
+  <div class="col-8 search-results">
+    <br />
+    <h1 class="results-header">National Parks</h1>
+
+    <% parks.forEach(index =>{ %>
+    <div class="individual-results">
+      <h4><a href="parks/<%= index.name %>"><%=index.name%></a></h4>
+      <p><%=index.about %></p>
+      <p><%=index.city %></p>
+      <p><b><%=index.state %></b></p>
+      <p><%=index.weatherInfo %></p>
+
+      <a href="<%=index.img %>"><p><%=index.img %></p></a>
+    </div>
+    <% }) %>
+  </div>
+
+  <div class="col-2 search-right"></div>
+</div>

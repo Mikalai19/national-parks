@@ -140,7 +140,7 @@ app.get('/parks', function (req, res) {
 });
 
 
-app.get('/parks', function (req, res) {
+app.get('/showall', function (req, res) {
   Park.findAll({
     where: {
       name: {
@@ -150,7 +150,7 @@ app.get('/parks', function (req, res) {
   })
     .then(function (parksList) {
       console.log('FOUND ALL PARKS', parksList);
-      res.render('new', { parks: parksList });
+      res.render('showall', { parks: parksList });
     })
     .catch(function (error) {
       console.log('ERROR', error);
@@ -158,9 +158,29 @@ app.get('/parks', function (req, res) {
     });
 });
 
-app.get('/parks', function (req, res) {
+
+app.get('/parks/new', function (req, res) {
   res.render('parks/new');
 });
+
+app.get('/parks/edit/:id', function (req, res) {
+  let parkIndex = Number(req.params.id);
+  Park.findByPk(parkIndex)
+    .then(function (park) {
+      if (park) {
+        park = park.toJSON();
+        res.render('parks/edit', { park });
+
+      } else {
+        console.log('This park does not exist');
+        res.render('404', { msg: 'park does not exist' });
+      }
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+    });
+
+})
 
 app.get('/parks/:id', function (req, res) {
   console.log('PARAMS', req.params);
@@ -171,7 +191,7 @@ app.get('/parks/:id', function (req, res) {
       if (park) {
         park = park.toJSON();
         console.log('IS IT NUMBER?', park);
-        res.render('show', { park: park });
+        res.render('parks/showalldetails', { park: park });
       } else {
         console.log('Sorry...Try it again')
         res.render('404', { msg: 'Sorry...Try it again' });
@@ -182,6 +202,10 @@ app.get('/parks/:id', function (req, res) {
     })
 
 })
+
+
+
+
 
 ////////////////////////////////////////////////////
 
@@ -337,11 +361,11 @@ app.get('/trails/:id', function (req, res) {
 
 app.post('/trails', function (req, res) {
   console.log('SUBMITTED FORM', req.body);
-  // res.json({ submittedForm: req.body });
+
   Trail.create({
     name: req.body.name,
     length: Number(req.body.length),
-    difficulty: Number(req.body.tracks),
+    difficulty: Number(req.body.difficulty),
 
   })
     .then(function (newTrail) {
@@ -352,12 +376,35 @@ app.post('/trails', function (req, res) {
     .catch(function (error) {
       console.log('ERROR', error);
       res.render('404', { msg: 'Trail was not added' })
-      res.redirect('/trails/new');
+      //res.redirect('/trails/new');
     })
 
 });
 
+/////////// UPDATE TRAIL ////////////////
 
+app.put('/trails/:id', function (req, res) {
+  console.log('SUBMITTED FORM', req.body);
+  let trailIndex = Number(req.params.id);
+  Trail.update({
+    name: req.body.name,
+    length: Number(req.body.length),
+    difficulty: req.body.difficulty
+
+  },
+    { where: { id: trailIndex } })
+
+    .then(function (response) {
+      console.log('UPDATED', response);
+      res.redirect(`/new/${trailIndex}`);
+    })
+    .catch(function (error) {
+      console.log('ERROR', error);
+      res.render('404', { msg: 'Sorry... Update was not successful' })
+
+    })
+
+});
 
 
 

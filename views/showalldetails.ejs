@@ -8,10 +8,13 @@
   </head>
   <body>
     <body>
-      <h1><%= trail.name %></h1>
-      <h2><%= trail.length %></h2>
-      <h3><%= trail.difficulty %></h3>
-      <a href="/trails/edit/<%= trail.id %>">Edit Trail</a>
+      <h1><%= park.name %></h1>
+      <h2><%= park.about %></h2>
+      <h3><%= park.city %></h3>
+      <h3><%= park.weatherInfo %></h3>
+      <h3><%= park.state %></h3>
+      <h3><%= park.img %></h3>
+      <a href="showalldetails/<%= parks.id %>">Add to Favorites</a>
     </body>
   </body>
 </html>
