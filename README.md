@@ -42,7 +42,7 @@ Why:
 
 ## Code Snippets
 
-# Retrieve a date using API
+## Retrieve a date using API
 
 ```javascript
 
@@ -60,7 +60,7 @@ axios.get('https://developer.nps.gov/api/v1/parks?limit=465&api_key=...')
 
 ```
 
-# Create a Park
+## Create a Park
 
 ```javascript
 Park.create({
@@ -79,7 +79,7 @@ Park.create({
   });
 ```
 
-# create a GET route and find all parks that contained **National Park**
+## Create a GET route and find all parks that contained **National Park**
 
 ```javascript
 app.get("/parks", function (req, res) {
@@ -101,7 +101,7 @@ app.get("/parks", function (req, res) {
 });
 ```
 
-# Display **Grand Canyon National Park** only
+## Display **Grand Canyon National Park** only
 
 ```javascript
 <% for( let i = 0; i < parks.length; i++ ) { %>
