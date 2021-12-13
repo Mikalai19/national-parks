@@ -204,37 +204,29 @@ app.get('/parks/:id', function (req, res) {
 })
 
 
-
-
-
 ////////////////////////////////////////////////////
 
 
-////////////// POST ////////////
+app.get('/favorites', function (req, res) {
+  Favorite.findAll()
+    .then(function (favoritesList) {
+      console.log('FOUND ALL favorites', favoritesList);
+      res.render('favorites/index', { favorites: favoritesList })
+    })
+    .catch(function (err) {
+      console.log('ERROR', err);
+      res.json({ message: 'Error occured, please try again....' });
+    });
+});
+
+
 
 app.get('/favorites', function (req, res) {
   res.render('favorites');
 });
 
 
-app.post('/favorites', function (req, res) {
-  console.log('FORM', req.body);
-  Favorite.create({
-    parkId: req.body.parkId,
 
-  })
-    .then(function (newFavorite) {
-      newFavorite = newFavorite.toJSON();
-      console.log('CREATE A FAVORITE', newFavorite);
-      res.redirect(`/favorites/${newFavorite.id}`);
-    })
-    .catch(function (error) {
-      console.log.apply('ERROR', error);
-      res.render('404', { msg: 'Sorry... Try it again' });
-      // res.redirect('favorites');
-    })
-
-});
 
 app.get('/favorites', function (req, res) {
   res.render('favorites');
@@ -260,6 +252,23 @@ app.get('/favorites/:id', function (req, res) {
     });
 });
 
+app.post('/favorites', function (req, res) {
+  console.log('FORM', req.body);
+  Favorite.create({
+    parkId: req.body.parkId,
+  })
+    .then(function (newFavorite) {
+      newFavorite = newFavorite.toJSON();
+      console.log('CREATE A FAVORITE', newFavorite);
+      res.redirect(`/favorites/${newFavorite.id}`);
+    })
+    .catch(function (error) {
+      console.log.apply('ERROR', error);
+      res.render('404', { msg: 'Sorry... Try it again' });
+      // res.redirect('favorites');
+    })
+
+});
 
 
 
