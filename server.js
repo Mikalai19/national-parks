@@ -282,6 +282,7 @@ app.post('/favorites', function (req, res) {
 
 });
 
+
 // app.delete('/favorites/:id', function (req, res) {
 //   console.log("ID", req.params.id);
 // })
@@ -343,7 +344,6 @@ app.get('/trails', function (req, res) {
       res.json({ msg: 'Error , please try again....' });
     });
 });
-
 
 
 

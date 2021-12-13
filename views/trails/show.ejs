@@ -9,16 +9,24 @@
       body {
         background-image: url("https://cdn.wallpapersafari.com/43/90/1Lp92s.png");
       }
+      .show {
+        text-align: center;
+      }
     </style>
   </head>
 
   <body>
-    <h1><%= trail.name %></h1>
-    <h2><%= trail.length %></h2>
-    <h3><%= trail.difficulty %></h3>
-    <a href="/trails/edit/<%= trail.id %>">Edit Trail</a>
-    <br />
-    <br />
-    <a href="/favorite/index/<%= trail.id %>">Add to the favorites</a>
+    <div class="show">
+      <label for="fname">Name</label>
+      <h1><%= trail.name %></h1>
+      <label for="lname">Length</label>
+      <h2><%= trail.length %></h2>
+      <label for="lname">Difficulty</label>
+      <h3><%= trail.difficulty %></h3>
+      <a href="/trails/edit/<%= trail.id %>">Edit Trail</a>
+      <br />
+      <br />
+      <a href="/favorite/index/<%= trail.id %>">Add to the favorites</a>
+    </div>
   </body>
 </html>
