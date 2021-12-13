@@ -118,7 +118,7 @@ app.get('/', function (req, res) {
 
 
 
-/////////////////   GET PARKS  /////////////////////
+/////////////////  PARKS  /////////////////////
 
 
 app.get('/parks', function (req, res) {
@@ -221,8 +221,6 @@ app.get('/favorites', function (req, res) {
 
 
 
-
-
 app.get('/favorites', function (req, res) {
   res.render('favorites');
 });
@@ -233,7 +231,7 @@ app.get('/favorites/edit/:id', function (req, res) {
     .then(function (favorite) {
       if (favorite) {
         favorite = favorite.toJSON();
-        res.render('favorites', { favorite });
+        res.render('favorites/index', { favorite });
 
       } else {
         console.log('This favorite does not exist');
