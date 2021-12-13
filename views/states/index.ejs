@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col-2 search-left"></div>
+
+  <div class="col-8 search-results">
+    <br />
+    <h1 class="results-header">States</h1>
+
+    <% states.forEach(index =>{ %>
+    <div class="individual-results">
+      <h4><a href="s/<%= index.name %>"><%=index.name%></a></h4>
+      <p><%=index.name %></p>
+      <p><%=index.numberOfParks %></p>
+
+      <a href="<%=index.img %>"><p><%=index.img %></p></a>
+
+      <a href="/trails/edit/<%= index.id %>"><b>Add to Favorites</b></a>
+    </div>
+    <% }) %>
+  </div>
+
+  <div class="col-2 search-right"></div>
+</div>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>All States</title>
+  </head>
+  <body></body>
+</html>

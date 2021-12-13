@@ -270,7 +270,20 @@ app.post('/favorites', function (req, res) {
 
 });
 
-
+app.delete('/favorites/:id', function (req, res) {
+  console.log("ID", req.params.id);
+})
+let favoriteIndex = Number(req.params.id);
+Favorite.destroy({
+  where: { id: favoriteIndex }
+})
+  .then(function (response) {
+    console.log('FAVORITES DELETED', response);
+    res.redirect('/favorites');
+  })
+  .catch(function (err) {
+    console.log(err);
+  })
 
 ///////// STATE CREATE /////////////
 
@@ -417,7 +430,19 @@ app.put('/trails/:id', function (req, res) {
 
 
 
+////////// STATES ///////////////
 
+app.get('/states', function (req, res) {
+  State.findAll()
+    .then(function (stateList) {
+      console.log('FOUND ALL states', stateList);
+      res.render('states/index', { states: stateList })
+    })
+    .catch(function (err) {
+      console.log('ERROR', err);
+      res.json({ msg: 'Error , please try again....' });
+    });
+});
 
 
 
