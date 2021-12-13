@@ -119,11 +119,13 @@ app.get("/parks", function (req, res) {
 
 ## Routing
 
-| Method       | Path         | Location     | Purpose      |
-| ------------ | ------------ | ------------ | ------------ |
-| GET          | Content Cell | Content Cell | Content Cell |
-| Content Cell | Content Cell | Content Cell | Content Cell |
-| Content Cell | Content Cell | Content Cell | Content Cell |
-| Content Cell | Content Cell | Content Cell | Content Cell |
-| Content Cell | Content Cell | Content Cell | Content Cell |
-| Content Cell | Content Cell | Content Cell | Content Cell |
+| Method | Path         | Location  | Purpose      |
+| ------ | ------------ | --------- | ------------ |
+| GET    | /auth/login  | auth.js   | Login form   |
+| GET    | /auth/signup | auth.js   | Signup form  |
+| POST   | /auth/login  | auth.js   | Login user   |
+| POST   | /auth/signup | auth.js   | Creates user |
+| GET    | /profile     | server.js | User profile |
+| GET    | /            | server.js | Home page    |
+| POST   | /trails/id   | server.js | Create trail |
+| PUT    | /trails/edit | server.js | Edit trail   |
