@@ -34,6 +34,12 @@ Why:
 
 ---
 
+## Wireframe
+
+![](img/Screen%20Shot%202021-12-13%20at%2011.52.18%20AM.png)
+
+---
+
 ## Code Snippets
 
 # Retrieve a date using API
