@@ -24,15 +24,6 @@
       <label for="lname">Difficulty</label>
       <h3><%= trail.difficulty %></h3>
       <a href="/trails/edit/<%= trail.id %>">Edit Trail</a>
-      <br />
-      <br />
-      <a href="/favorites/show/<%= trail.id %>">Add to the favorites</a>
-      
-<div>
-  <br />
-   <form < method = "POST" action="/trails/<%=trail.id %>/?_method=DELETE">
-    <input type="Submit" value='Delete Trail'/>
-  </div>
     </div>
   </body>
 </html>

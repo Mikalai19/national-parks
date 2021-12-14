@@ -225,13 +225,15 @@ app.get('/favorites', function (req, res) {
   res.render('favorites');
 });
 
-app.get('/favorites/edit/:id', function (req, res) {
+
+
+app.get('/favorites/show/:id', function (req, res) {
   let favoriteIndex = Number(req.params.id);
   Favorite.findByPk(favoriteIndex)
     .then(function (favorite) {
       if (favorite) {
         favorite = favorite.toJSON();
-        res.render('favorites/index', { favorite });
+        res.render('favorites/show', { favorite });
 
       } else {
         console.log('This favorite does not exist');
@@ -244,6 +246,10 @@ app.get('/favorites/edit/:id', function (req, res) {
 
 })
 
+app.get('/favorites/show', function (req, res) {
+  res.render('favorites/show');
+});
+
 app.get('/favorites/:id', function (req, res) {
   console.log('PARAMS', req.params);
   let favoriteIndex = Number(req.params.id);
@@ -253,7 +259,7 @@ app.get('/favorites/:id', function (req, res) {
       if (favoritePark) {
         favoritePark = favoritePark.toJSON();
         console.log('IS THIS A Park?', favoritePark);
-        res.render('favorites/index', { favoritePark });
+        res.render('favorites/show', { favoritePark });
       } else {
         console.log('This Park does not exist');
         res.render('404', { msg: 'Park does not exist' });
@@ -436,6 +442,22 @@ app.put('/trails/:id', function (req, res) {
       console.log('ERROR', error);
       res.render('404', { msg: 'Sorry... Update was not successful' })
 
+    })
+
+});
+
+
+app.delete('trails/:id', function (req, res) {
+  console.log('ID WILL BE', req.params.id);
+  let trailIndex = Number(req.params.id);
+  Trail.destroy({ where: { id: trailIndex } })
+    .then(function (response) {
+      console.log('TRAIL DELETED', response);
+      res.redirect('/trails');
+    })
+    .catch(function (error) {
+      console.log('ERR', error);
+      res.render('404', { msg: 'TRAIL WAS NOT DELETED' });
     })
 
 });
