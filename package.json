@@ -39,6 +39,7 @@
     "pg": "^8.5.1",
     "querystring": "^0.2.1",
     "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.3.0",
     "unsplash-js": "^7.0.15"
   },
   "devDependencies": {
