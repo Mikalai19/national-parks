@@ -358,7 +358,7 @@ app.get('/trails/edit/:id', function (req, res) {
     .then(function (trail) {
       if (trail) {
         trail = trail.toJSON();
-        res.render('trails/edit', { trail });
+        res.render('trails/new', { trail });
 
       } else {
         console.log('This trail does not exist');
@@ -430,7 +430,7 @@ app.put('/trails/:id', function (req, res) {
 
     .then(function (response) {
       console.log('UPDATED', response);
-      res.redirect(`/new/${trailIndex}`);
+      res.redirect(`trails/show${trailIndex}`);
     })
     .catch(function (error) {
       console.log('ERROR', error);
