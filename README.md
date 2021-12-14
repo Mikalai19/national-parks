@@ -101,6 +101,33 @@ app.get("/parks", function (req, res) {
 });
 ```
 
+## Validation
+
+```javascript
+
+Park.init({
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    about: DataTypes.TEXT,
+    weatherInfo: DataTypes.TEXT,
+    city:
+    {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    state: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    img: DataTypes.STRING,
+    stateId: DataTypes.INTEGER,
+    parkId: DataTypes.INTEGER
+  },
+
+```
+
 ## Display **Grand Canyon National Park** only
 
 ```javascript

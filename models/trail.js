@@ -16,7 +16,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Trail.init({
-    name: DataTypes.STRING,
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     length: DataTypes.STRING,
     difficulty: DataTypes.STRING
   }, {
