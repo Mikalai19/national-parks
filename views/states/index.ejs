@@ -23,14 +23,14 @@
 
 <section class="container">
 
-    <div class="column is-narrow">
+   
         <article class="message is-link">
             <div class="message-header">
                 <p>All trails</p>
                 <button class="delete" aria-label="delete"></button>
             </div>
-            <div class="message-body">
-                <div class="board-item">
+            
+               
                     <div class="board-item-content"><span><% states.forEach(a =>{ %>
                         <% if(a.name ==='CA'){%>
                               <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
@@ -38,7 +38,7 @@
                        <%  }%>
                       <% }) %></span></div>
                 </div>
-                <div class="board-item">
+                
                     <div class="board-item-content"><span><% states.forEach(a =>{ %>
                         <% if(a.name ==='KY'){%>
                               <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
@@ -52,7 +52,7 @@
                           
                    <%  }%>
                   <% }) %></span></div>
-            </div>
+           
               
                     <div class="board-item-content"><span><% states.forEach(a =>{ %>
                         <% if(a.name ==='WA'){%>
@@ -61,7 +61,7 @@
                        <%  }%>
                       <% }) %></span></div>
                 </div>
-                <div class="board-item">
+                
                     <div class="board-item-content"><span><% states.forEach(a =>{ %>
                         <% if(a.name ==='OR'){%>
                               <h4><a href="states/<%= a.id %>"><%=a.name%></a></h4>
@@ -158,7 +158,7 @@
                                                                 </div>
             </div>
         </article>
-    </div>
+    
     
     
     
