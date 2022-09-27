@@ -246,9 +246,7 @@ app.get('/favorites/show/:id', function (req, res) {
 
 })
 
-app.get('/favorites/show', function (req, res) {
-  res.render('favorites/show');
-});
+
 
 app.get('/favorites/:id', function (req, res) {
   console.log('PARAMS', req.params);
@@ -515,15 +513,6 @@ const server = app.listen(PORT, () => {
 });
 
 module.exports = server;
-
-
-
-
-
-
-
-
-
 
 
 
